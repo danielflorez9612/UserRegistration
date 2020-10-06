@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 public class UserDto {
 
-	@NotBlank(message = "no puede ser nulo o vacio")
+	@NotBlank
 	private String name;
 
 	@NotBlank()
