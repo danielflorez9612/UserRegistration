@@ -2,6 +2,7 @@ package com.daniel.nisum.web.controller;
 
 import javax.validation.Valid;
 
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,8 +16,8 @@ import com.daniel.nisum.web.dto.UserDto;
 
 @RestController
 public class UserController {
-	
-	@Autowired
+
+	@Setter(onMethod_={@Autowired})
 	private IUserService userService;
 	
 	@PostMapping("/users")

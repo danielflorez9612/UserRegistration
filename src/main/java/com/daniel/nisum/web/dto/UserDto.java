@@ -1,29 +1,23 @@
 package com.daniel.nisum.web.dto;
 
-import java.util.List;
+import com.daniel.nisum.web.validation.ValidEmail;
+import com.daniel.nisum.web.validation.ValidPassword;
+import lombok.Data;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
-import com.daniel.nisum.web.validation.ValidEmail;
-import com.daniel.nisum.web.validation.ValidPassword;
-
-import lombok.Data;
+import java.util.List;
 
 @Data
 public class UserDto {
 
-	@NotNull
-	@NotBlank
+	@NotBlank(message = "no puede ser nulo o vacio")
 	private String name;
 
-	@NotNull
-	@NotBlank
+	@NotBlank()
 	@ValidEmail
 	private String email;
 	
-	@NotNull
 	@NotBlank
 	@ValidPassword
 	private String password;

@@ -2,6 +2,7 @@ package com.daniel.nisum.service;
 
 import com.daniel.nisum.web.dto.UserDto;
 
+@FunctionalInterface
 public interface UserTokenService {
-	public String generateToken(UserDto userDto);
+	String generateToken(UserDto userDto);
 }

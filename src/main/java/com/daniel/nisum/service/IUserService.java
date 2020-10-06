@@ -3,8 +3,8 @@ package com.daniel.nisum.service;
 
 import com.daniel.nisum.persistence.model.User;
 import com.daniel.nisum.web.dto.UserDto;
-import com.daniel.nisum.web.error.UserAlreadyExistException;
 
+@FunctionalInterface
 public interface IUserService {
-	User registerUser(UserDto user) throws UserAlreadyExistException;
+	User registerUser(UserDto user);
 }

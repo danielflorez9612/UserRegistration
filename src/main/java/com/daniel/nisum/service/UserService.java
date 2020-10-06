@@ -3,6 +3,7 @@ package com.daniel.nisum.service;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +16,14 @@ import com.daniel.nisum.web.error.UserAlreadyExistException;
 @Service
 public class UserService implements IUserService {
 
-	@Autowired
+	@Setter(onMethod_={@Autowired})
 	private UserRepository userRepository;
-	
-	@Autowired
+
+	@Setter(onMethod_={@Autowired})
 	private UserTokenService tokenService;
 	
 	@Override
-	public User registerUser(UserDto userDto) throws UserAlreadyExistException {
+	public User registerUser(UserDto userDto) {
 		if (emailExisting(userDto.getEmail())) {
 			throw new UserAlreadyExistException();
 		}
