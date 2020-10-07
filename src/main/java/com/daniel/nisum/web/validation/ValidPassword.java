@@ -14,7 +14,7 @@ import javax.validation.Payload;
 @Constraint(validatedBy = PasswordValidator.class)
 @Documented
 public @interface ValidPassword {   
-    String message() default "Una Mayuscula, letras minúsculas, y dos numeros.";
+    String message() default "{ValidPassword.message}";
     Class<?>[] groups() default {}; 
     Class<? extends Payload>[] payload() default {};
 }

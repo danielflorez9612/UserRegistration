@@ -8,29 +8,16 @@ import javax.validation.ConstraintValidatorContext;
 
 public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
 
-	private Pattern pattern;
-	private Matcher matcher;
-	private static final String EMAIL_PATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-	private String errorMessage;
-
-	@Override
-	public void initialize(ValidEmail constraintAnnotation) {
-		errorMessage = constraintAnnotation.message();
-	}
+	private static final String EMAIL_PATTERN = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
 	@Override
 	public boolean isValid(String email, ConstraintValidatorContext context) {
-		boolean isValid = validateEmail(email);
-		if (!isValid) {
-			context.disableDefaultConstraintViolation();
-			context.buildConstraintViolationWithTemplate(": " + errorMessage).addConstraintViolation();
-		}
-		return isValid;
+		return validateEmail(email);
 	}
 
-	private boolean validateEmail(String email) {
-		pattern = Pattern.compile(EMAIL_PATTERN);
-		matcher = pattern.matcher(email);
+	private static boolean validateEmail(String email) {
+		Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+		Matcher matcher = pattern.matcher(email);
 		return matcher.matches();
 	}
 
